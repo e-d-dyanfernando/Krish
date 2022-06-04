@@ -12,25 +12,37 @@
 // i.e. : numberSeq= [21,25,29,28,22,24,27,26,30] here missing one is 23. 
 // Trick is if start number or end number is missing how to figure that. make sure they captured that.
 
+// Check your program with given example data set. 
+// Also test what happened if first number is missing and also test what happens if last number is missing. 
+// Your program should detect all three cases correctly.
+
 
 // Answer
 
-const numberSeq = [21,25,29,28,22,24,27,26,30];
+var numberSeq = [21,25,29,28,22,24,27,26,30];
 //numberSeq.sort();
 
 function bubbleSort(numberSeq){
-    const length = numberSeq.length
+    var length = numberSeq.length
 
-    for(const i = 0; i < length; i++){
-        for(const j = 0; j < length; j++){
+    for(var i = 0; i < length; i++){
+        for(var j = 0; j < length; j++){
             if (numberSeq[j] > numberSeq[j + 1]){
-                const temp = numberSeq[j]
+                var temp = numberSeq[j]
                 numberSeq[j] = numberSeq [j + 1]
                 numberSeq[j + 1] = temp
             }
         }
-        console.log('iteration ${i + 1}' , numberSeq)
+        console.log('iteration '+(i+1)+'' , numberSeq)
     }
     return numberSeq
 }
-console.log(bubbleSort(numberSeq));
+numberSeq = bubbleSort(numberSeq);
+
+// Sorting numbers are itterating through the array
+for(var i =0; i<(numberSeq.length-1);i++){
+    // After adding the vaule to the current index checking weather its equal to the next index value 
+    if( numberSeq[i]+1 != numberSeq[i+1] ){
+        console.log("\nLost Number: ",numberSeq[i]+1);
+    }
+}
